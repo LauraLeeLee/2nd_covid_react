@@ -1,0 +1,209 @@
+body {
+  background: #ffeda3;
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.header-title {
+  margin-top: 90px;
+  font-size: 60px;
+  color: #0401c1;
+  text-shadow: 3px 3px #6b6b6b;
+}
+
+.header-img {
+  width: 20%;
+  /* opacity: 0.5; */
+  position: relative;
+  top: -170px;
+  left: -300px;
+  margin-bottom: -100px;
+}
+
+.welcome {
+  font-size: 2.8em;
+  color: #0401c1;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(59, 59, 59);
+  margin-bottom: 10px;
+}
+
+.first-letter {
+  font-size: 1.5em;
+  text-shadow: 4px 4px #6b6b6b;
+}
+
+.welcome-div p {
+  font-size: 1.5em;
+  color: #0401c1;
+  width: 50%;
+  margin: 0 auto 0;
+}
+
+/* world data on home page */
+.world-data {
+  margin-top: 50px;
+}
+
+.world-data h3 {
+  font-size: 24px;
+  font-style: oblique;
+}
+
+.world-data h3,
+.world-data p {
+  color: #bb0c5c;
+}
+
+.world-data p {
+  display: inline;
+  font-size: 18px;
+}
+
+.world-data p:first-of-type {
+  margin-right: 40px;
+}
+
+.world-data p span {
+  margin-right: 8px;
+}
+
+/* Nav */
+nav ul {
+  /* display: flex; */
+  /* justify-content: space-around; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #0401c1;
+  /* width: 75%; */
+  /* margin: 0 auto 0; */
+  font-size: 20px;
+}
+
+nav li {
+  display: inline-block;
+  width: 25%;
+  margin: 0 auto 0;
+  margin-right: 5%;
+  background-color: #910303;
+}
+
+nav li a {
+  text-decoration: none;
+  padding: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+.data-div,
+.selected-data-div {
+  display: inline-block;
+  width: 30%;
+  border: 5px solid #0401c1;
+  background-color: #fffee0;
+  text-align: left;
+  font: 20px "Trebuchet MS", Helvetica, sans-serif;
+  color: #0401c1;
+  padding: 15px;
+  padding-bottom: 30px;
+}
+
+.data-div {
+  margin: 0 20px 20px;
+}
+
+.data-div p,
+.selected-data-div p {
+  margin-bottom: -10px;
+}
+
+.data-titles {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.selected-data-div {
+  margin: 0 auto 20px;
+}
+
+.select-options {
+  width: 30%;
+  margin: 0 auto 0;
+  height: 40px;
+}
+
+select .option-placeholder {
+  color: #c7c7c7;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.css-g1d714-ValueContainer .css-1wa3eu0-placeholder {
+  color: #0401c1;
+}
+
+/* datepicker */
+.react-datepicker-wrapper {
+  display: block;
+}
+
+.css-2b097c-container .css-yk16xz-control {
+  border-color: #0401c1;
+}
+
+.css-g1d714-ValueContainer .css-1wa3eu0-placeholder,
+.css-g1d714-ValueContainer .css-1uccc91-singleValue {
+  font-size: 24px;
+}
+
+.react-datepicker__input-container input {
+  text-align: center;
+  font-size: 24px;
+  padding: 5px;
+}
+
+/* selectedCountry & selectedState */
+/* hide div for error message */
+.api-error,
+.api-error-state {
+  display: none;
+}
+
+.error-p,
+.error-state-p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #9d0202;
+  border: 2px solid #9d0202;
+  width: 75%;
+  margin: 0 auto 0;
+  padding: 10px;
+}
+
+/* Date Selector CSS */
+
+/* ===Media Queries=== */
+@media screen and (max-width: 600px) {
+  .header-title {
+    font-size: 3.4em;
+  }
+
+  .header-img {
+    width: 40%;
+    margin-top: -40px;
+    position: unset;
+    top: unset;
+    left: unset;
+    margin-bottom: unset;
+  }
+
+  .data-div,
+  .selected-data-div {
+    width: 60%;
+  }
+
+  .select-options {
+    width: 73%;
+  }
+}

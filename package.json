@@ -1,0 +1,56 @@
+{
+  "name": "covid-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "browserslist": "^4.14.5",
+    "caniuse-lite": "^1.0.30001148",
+    "firebase": "^7.23.0",
+    "moment": "^2.29.1",
+    "prop-types": "^15.6.0",
+    "re-base": "4.0.0",
+    "react": "^16.14.0",
+    "react-datepicker": "^3.3.0",
+    "react-day-picker": "^7.4.8",
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^3.4.3",
+    "react-select": "^3.1.0",
+    "react-transition-group": "^2.2.1",
+    "serve": "^10.1.2",
+    "stylus": "0.54.5",
+    "version": "^0.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+    "now-build": "npm run build && mv build dist",
+    "styles:watch": "npm run styles -- -w",
+    "lint": "eslint"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3"
+  }
+}
