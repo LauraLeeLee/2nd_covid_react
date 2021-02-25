@@ -16,17 +16,13 @@ static propTypes = {
   componentName: PropTypes.string,
 }
 
-componentDidUpdate() {
-  
-}
-
   render() {
     const { selectedDate1, selectedDate2, name, componentName, formattedDate1, formattedDate2 } = this.props;
-    console.log('%c%s','background: #9812c4; color: #fff;',"selectedDate1: ", selectedDate1); 
-    console.log('%c%s','background: #9812c4; color: #fff;',"selectedDate2: ", selectedDate2); 
-    console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date1: ", formattedDate1);
-    console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date2: ", formattedDate2);
-   
+    // console.log('%c%s','background: #9812c4; color: #fff;',"selectedDate1: ", selectedDate1);
+    // console.log('%c%s','background: #9812c4; color: #fff;',"selectedDate2: ", selectedDate2);
+    // console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date1: ", formattedDate1);
+    // console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date2: ", formattedDate2);
+
   let yesterday2 = new Date(new Date().setDate(new Date().getDate() - 1));
     // console.log('%c%s','background: #9812c4; color: #fff;','yesterday2: ', yesterday2);
 
@@ -41,16 +37,16 @@ componentDidUpdate() {
     console.log('%c%s','background: #9812c4; color: #fff;',"DATE componentName: ", componentName);
     console.log('%c%s','background: #9812c4; color: #fff;',"date in what name?: ", name);
   }
-  
+
  if(componentName === 'country-component') {
     maxDate = addDays(new Date(), 0);
     selected = selectedDate1;
     // selected = selectedDate;
-    console.log('%c%s','background: #9812c4; color: #fff;',"DATE componentName: ", componentName);
-    console.log('%c%s','background: #9812c4; color: #fff;',"date in what name?: ", name);
-  } 
+    // console.log('%c%s','background: #9812c4; color: #fff;',"DATE componentName: ", componentName);
+    // console.log('%c%s','background: #9812c4; color: #fff;',"date in what name?: ", name);
+  }
 
-  console.log('%c%s','background: #9812c4; color: #fff;','what is maxDate: ', maxDate);
+  // console.log('%c%s','background: #9812c4; color: #fff;','what is maxDate: ', maxDate);
 
     return(
       <DatePicker selected={ selected }

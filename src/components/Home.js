@@ -21,7 +21,7 @@ worldTotalFetch = async () => {
   })
   .then(response => response.json()
   ).then(data => {
-    console.log("fetch world data: ", data);
+    // console.log("fetch world data: ", data);
     this.setState({worldData: data});
     return data;
   })
@@ -35,7 +35,7 @@ componentDidMount() {
 }
   render() {
     const {worldData} = this.state;
-    console.log(worldData);
+    // console.log(worldData);
 
     // const newToday = new Date();
     // let date = newToday.getDate();
@@ -44,7 +44,7 @@ componentDidMount() {
     // const today = month + ' ' + date +',' + ' ' + year;
 
     let today = new Date().toLocaleString('en-us', {month: 'long', year: 'numeric', day: 'numeric'});
-    console.log("today: ", today);
+    // console.log("today: ", today);
 
     // if(worldData.length > 0 ) {
     //   const confirmed = worldData[0].confirmed;

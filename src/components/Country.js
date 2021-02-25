@@ -9,9 +9,6 @@ import { formatDate, formatDate2, inputDate } from '../today-date.js';
 // import { apiKey } from '../data/clientInfo.js';
 // import { REACT_APP_API_KEY } from '../.env'; don't need to import the .env file, it is accessed with process.env.variableName
 
-console.log(inputDate);
-
-
 class Country extends Component {
     state = {
       apiData: [],
@@ -205,7 +202,7 @@ class Country extends Component {
         month = '0' + month;
       }
       reformatted = `${month}/${dt}/${year}`;
-      console.log(reformatted);
+      // console.log(reformatted);
     }
 
     return (
