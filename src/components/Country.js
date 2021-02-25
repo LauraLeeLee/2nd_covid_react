@@ -111,7 +111,6 @@ class Country extends Component {
     });
   }// end fetchCovid
 
-  // const selectCountry = this.state.selectCountry;
 
   selectedCountryFetch = async (country, date) => {
 
