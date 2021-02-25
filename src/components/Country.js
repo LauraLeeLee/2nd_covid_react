@@ -44,7 +44,6 @@ class Country extends Component {
     }
 
     displayErrorMessage = () => {
-      console.log('%c%s','background: #1233c4; color: #fff;',"DISPLAYERRORMESSAGE FIRED");
       const errorEl = document.getElementsByClassName('api-error');
       // console.log('error el:', errorEl[0]);
       // console.log('api error: ',this.state.apiError);
@@ -52,6 +51,7 @@ class Country extends Component {
       let dataDiv;
       // console.log(this.state.selectedApiData.length);
       if(Object.keys(this.state.selectedApiData).length > 0) {
+        console.log('%c%s','background: #1233c4; color: #fff;',"DISPLAYERRORMESSAGE FIRED");
         dataDiv = document.getElementsByClassName('selected-data-div');
         // console.log(dataDiv[0]);
       }
@@ -113,8 +113,8 @@ class Country extends Component {
 
 
   selectedCountryFetch = async (country, date) => {
-
     const API_KEY2 = process.env.REACT_APP_COUNTRIES_API_KEY;
+    console.log('apikey', API_KEY2);
     console.log('%c%s','background: #1233c4; color: #fff;',"SELECTED FETCH FIRED");
     console.log('%c%s','background: #1233c4; color: #fff;','date: ', date);
     console.log('%c%s','background: #1233c4; color: #fff;','selected country: ', country);
