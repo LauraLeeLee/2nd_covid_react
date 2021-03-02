@@ -13,10 +13,9 @@ body {
 
 .header-img {
   width: 20%;
-  /* opacity: 0.5; */
   position: relative;
   top: -170px;
-  left: -300px;
+  left: -320px;
   margin-bottom: -100px;
 }
 
@@ -99,7 +98,7 @@ nav li a {
 .data-div,
 .selected-data-div {
   display: inline-block;
-  width: 30%;
+  /* width: 30%; */
   border: 5px solid #0401c1;
   background-color: #fffee0;
   text-align: left;
@@ -183,20 +182,26 @@ select .option-placeholder {
 
 /* Date Selector CSS */
 
-/* ===Media Queries=== */
-@media screen and (max-width: 600px) {
-  .header-title {
-    font-size: 3.4em;
-  }
 
+
+/* ===Media Queries=== */
+@media screen and (max-width: 805px) {
   .header-img {
-    width: 40%;
+    width: 27%;
     margin-top: -40px;
     position: unset;
     top: unset;
     left: unset;
     margin-bottom: unset;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .header-title {
+    font-size: 3.4em;
+  }
+
+
 
   .data-div,
   .selected-data-div {

@@ -28,17 +28,17 @@ class SelectedCountry extends React.Component {
         handleChange={this.props.handleChange}
         selectCountry={this.props.selectCountry}
         />
-           <div className="api-error">
+        <div className="api-error">
               <p className="error-p">Data not available please choose another country</p>
             </div>
-            {Object.keys(selectedApiData).length > 0 && 
-             <div key={selectedApiData.parameters.country}
-             className="selected-data-div">  
+            {Object.keys(selectedApiData).length > 0 &&
+        <div key={selectedApiData.parameters.country}
+             className="selected-data-div">
               <p> <span className="data-titles">Date:</span> {selectedApiData.parameters.day || "Date not loaded"}</p>
               <p> <span className="data-titles">Country:</span> {selectedApiData.parameters.country  || "country name not loaded"}</p>
-              <p> <span className="data-titles">Confirmed Cases:</span> {((typeof selectedApiData.response[0]) != "undefined")  ?  selectedApiData.response[0].cases.total.toLocaleString() : "confirmed cases not loaded"}</p>
+              <p> <span className="data-titles">Total Confirmed Cases:</span> {((typeof selectedApiData.response[0]) != "undefined")  ?  selectedApiData.response[0].cases.total.toLocaleString() : "confirmed cases not loaded"}</p>
               <p> <span className="data-titles"> New Cases:{((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].cases.new : "new cases not loaded"}</span></p>
-              <p> <span className="data-titles">Deaths:</span> {((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].deaths.total.toLocaleString() : 0 }</p>
+              <p> <span className="data-titles">Total Deaths:</span> {((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].deaths.total.toLocaleString() : 0 }</p>
               <p> <span className="data-titles">New Deaths:</span> {((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].deaths.new : 0 }</p>
             </div>}
       </div>
@@ -61,7 +61,7 @@ export default SelectedCountry;
 // }
 
 
-   
+
     // if ( Object.keys(selectedApiData).length > 0 ) {
     //   console.log(selectedApiData);
     //   console.log('sel country api ', selectedApiData.response);

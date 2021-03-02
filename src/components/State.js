@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header.js';
 import SelectedState from './SelectedState.js';
-import  DateComp  from './Date.js';
+// import  DateComp  from './Date.js';
 import { yesterday, formatDate2 } from '../today-date.js';
 
 class StateComp extends React.Component {
@@ -21,7 +21,7 @@ class StateComp extends React.Component {
   }
 
 fetchStateCovid = async(state, date) => {
-  const response = await fetch(
+  await fetch(
     `https://api.covidtracking.com/v1/states/${state}/${date}.json`
   )
   .then(response => response.json()
@@ -68,16 +68,16 @@ fetchStateCovid = async(state, date) => {
               key={data.state}>
           <p> <span className="data-titles">State:</span> {data.state || "State name not loaded"}</p>
           <p> <span className="data-titles">Date:</span> {formatDate2(data.date) || "Date not loaded"}</p>
-          <p> <span className="data-titles">Confirmed Cases:</span> {data.positive.toLocaleString() || "confirmed cases not loaded"}</p>
+          <p> <span className="data-titles">Total Confirmed Cases:</span> {data.positive.toLocaleString() || "confirmed cases not loaded"}</p>
+          <p> <span className="data-titles">Total Deaths:</span> {data.death.toLocaleString() || 0 ||  "total deaths not loaded"}</p>
           <p> <span className="data-titles">New Cases:</span> {data.positiveIncrease.toLocaleString() || 0 ||  "new cases not loaded"}</p>
-          <p> <span className="data-titles">Deaths:</span> {data.death.toLocaleString() || 0 ||  "total deaths not loaded"}</p>
           <p> <span className="data-titles">New Deaths:</span> {data.deathIncrease.toLocaleString() || 0 ||  "new deaths not loaded"}</p>
         </div>
         )}
     <SelectedState selectedDate2={selectedDate2}
-                   formattedDate2={formattedDate2}
-                   handleDateChange={this.props.handleDateChange}
-                   componentName={componentName}
+                    formattedDate2={formattedDate2}
+                    handleDateChange={this.props.handleDateChange}
+                    componentName={componentName}
                   />
     </div>
   )}

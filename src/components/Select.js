@@ -17,9 +17,7 @@ class SelectComp extends React.Component {
 
   render() {
     const {stateList, countryList} = this.state;
-  
     // const countries = countryList.map(country => ({value: country.code, label: country.name}));
- 
     let options;
     if(this.props.name === "Country") {
       options = countryList;
@@ -29,12 +27,12 @@ class SelectComp extends React.Component {
     }
     return (
       <div>
-        <Select name={`${this.props.name}`} 
+        <Select name={`${this.props.name}`}
               className={`select-options select-${this.props.name}`}
               onChange={this.props.handleChange}
               placeholder= {this.props.name === "Country" ? "Select Country" : "Select State"}
               options={options}
-              />  
+              />
       </div>
     )
   }
@@ -61,7 +59,7 @@ export default SelectComp;
     //                    { value }
     //           </option>
     //  });
-    
+
     //  const optionsState = Object.entries(stateList).map((entry) => {
     //   return <option key={entry.key}
     //             value={entry.key}>

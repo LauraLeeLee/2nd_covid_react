@@ -1,4 +1,4 @@
-import { isCompositeComponent } from "react-dom/test-utils";
+// import { isCompositeComponent } from "react-dom/test-utils";
 
 let today = new Date();
 let date = today.getDate();
@@ -48,7 +48,7 @@ export const formatDate = (date) => {
 // formats date to MM/DD/YYYY when date is in YYYYMMDD format
 // used in State component
 export const formatDate2 = (date) => {
-  if(date != undefined) {
+  if(date !== undefined) {
   const dateStr = date.toString();
   const yr = dateStr.slice(0, 4);
   const month = dateStr.slice(4, 6);
@@ -60,4 +60,3 @@ export const formatDate2 = (date) => {
     return null;
   }
 }
- 

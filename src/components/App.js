@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Moment from 'moment';
 import Home from './Home.js';
-import Header from './Header.js';
+// import Header from './Header.js';
 import Nav from './Nav.js';
 import Country from './Country.js';
 import StateComp from './State.js';
@@ -71,25 +71,24 @@ handleCountryOrState = (name) => {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/Countries" 
-                   render={props => 
+            <Route path="/Countries"
+                  render={props =>
                       (<Country {...props} selectedDate1={selectedDate1}
                         formattedDate1={formattedDate1}
                         name={name}
                         componentName={componentName}
                         handleDateChange={this.handleDateChange}
                         handleCountryOrState={this.handleCountryOrState}/>)
-                        
                       }/>
-            <Route path="/States" 
-                   render={props =>
+            <Route path="/States"
+                    render={props =>
                     (<StateComp {...props} selectedDate2={selectedDate2}
                       formattedDate2={formattedDate2}
                       name={name}
                       componentName={componentName}
                       handleDateChange={this.handleDateChange}
                       handleCountryOrState={this.handleCountryOrState}/>)
-                   }/>
+                    }/>
           </Switch>
         </div>
       </Router>
@@ -105,12 +104,12 @@ handleCountryOrState = (name) => {
       //              formattedDate={formattedDate}
       //              handleDateChange={this.handleDateChange}
       //              />
-       
+
       //   {/* <SelectComp label="State"
       //              selectValue={this.selectValue}/>  */}
       // </div>
     )
-  }  
+  }
 }
 
 export default App;

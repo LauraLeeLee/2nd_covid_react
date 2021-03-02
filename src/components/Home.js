@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Moment from 'moment';
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import Moment from 'moment';
 import Header from './Header.js';
-import Country from './Country.js';
-import StateComp from './State.js';
+// import Country from './Country.js';
+// import StateComp from './State.js';
 
 class Home extends React.Component {
   state = {

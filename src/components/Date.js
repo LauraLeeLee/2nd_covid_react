@@ -28,9 +28,9 @@ static propTypes = {
 
   let selected;
   let maxDate;
-  let onChange;
+  // let onChange;
 
-  if(componentName === 'state-component'){ 
+  if(componentName === 'state-component'){
     // selected = yesterday2;
     maxDate = addDays(new Date(), -1);
     selected = selectedDate2;
