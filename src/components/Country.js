@@ -110,6 +110,7 @@ class Country extends Component {
 
 
   selectedCountryFetch = async (country, date) => {
+    console.log('selected country in fetch', country);
     const API_KEY2 = process.env.REACT_APP_COUNTRIES_API_KEY;
     console.log('%c%s','background: #1233c4; color: #fff;',"SELECTED FETCH FIRED");
     console.log('%c%s','background: #1233c4; color: #fff;','date: ', date);

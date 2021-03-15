@@ -10,11 +10,11 @@ class SelectedCountry extends React.Component {
     dataSet: PropTypes.shape({
     apiError: PropTypes.arrayOf(PropTypes.string)
     })
-  } 
- 
+  }
+
   render() {
     const {selectedApiData, apiError} = this.props;
-    // console.log("selected country data", selectedApiData);
+    console.log("selected country data", selectedApiData);
     // console.log('selected api in selectedCountry: ',selectedApiData);
     if(Object.keys(selectedApiData).length > 0) {
     // console.log(selectedApiData.parameters.country);
@@ -33,7 +33,7 @@ class SelectedCountry extends React.Component {
             </div>
             {Object.keys(selectedApiData).length > 0 &&
         <div key={selectedApiData.parameters.country}
-             className="selected-data-div">
+            className="selected-data-div">
               <p> <span className="data-titles">Date:</span> {selectedApiData.parameters.day || "Date not loaded"}</p>
               <p> <span className="data-titles">Country:</span> {selectedApiData.parameters.country  || "country name not loaded"}</p>
               <p> <span className="data-titles">Total Confirmed Cases:</span> {((typeof selectedApiData.response[0]) != "undefined")  ?  selectedApiData.response[0].cases.total.toLocaleString() : "confirmed cases not loaded"}</p>
