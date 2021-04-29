@@ -24,7 +24,7 @@ class SelectedCountry extends React.Component {
 
     return(
       <div>
-        <SelectComp name="Country" 
+        <SelectComp name="Country"
         handleChange={this.props.handleChange}
         selectCountry={this.props.selectCountry}
         />
@@ -75,16 +75,16 @@ export default SelectedCountry;
     // if(apiError.name === 'TypeError') {
     //   console.log("error: ", apiError);
     // }
-   
+
     // console.log("errorEl[0]: ", errorEl);
 
       {/* {selectedApiData.length > 0 && selectedApiData.map(data =>
-             <div key={data.country}
-             className="data-div">
-               <p>User Selected a day and country</p>
-          <p> <span className="data-titles">Date:</span> {formatDate(data.response[0].day) || "Date not loaded"}</p>
-          <p> <span className="data-titles">Country:</span> {data.response[0].country || "country name not loaded"}</p>
-          <p> <span className="data-titles">Confirmed Cases:</span> {data.response[0].cases.total.toLocaleString() || "confirmed cases not loaded"}</p>
-          <p> <span className="data-titles">Deaths:</span> {data.response[0].deaths.total.toLocaleString() || 0 }</p>
-        </div>
+            <div key={data.country}
+                className="data-div">
+              <p>User Selected a day and country</p>
+              <p> <span className="data-titles">Date:</span> {formatDate(data.response[0].day) || "Date not loaded"}</p>
+              <p> <span className="data-titles">Country:</span> {data.response[0].country || "country name not loaded"}</p>
+              <p> <span className="data-titles">Confirmed Cases:</span> {data.response[0].cases.total.toLocaleString() || "confirmed cases not loaded"}</p>
+              <p> <span className="data-titles">Deaths:</span> {data.response[0].deaths.total.toLocaleString() || 0 }</p>
+            </div>
           )}   */}

@@ -16,9 +16,9 @@ state = {
   selectValue: "",
   name: "",
   selectedDate1: new Date(),
-  selectedDate2: new Date(new Date().setDate(new Date().getDate() - 1)),
+  selectedStateDate1: new Date(new Date().setDate(new Date().getDate() - 1)),
   formattedDate1: Moment(new Date()).format('YYYYMMDD'),
-  formattedDate2: Moment(new Date(new Date().setDate(new Date().getDate() - 1))).format('YYYYMMDD'),
+  formattedStateDate1: Moment(new Date(new Date().setDate(new Date().getDate() - 1))).format('YYYYMMDD'),
   componentName: ""
 }
 
@@ -37,7 +37,7 @@ handleDateChange = async(date, name) => {
   }
   if(this.state.name === 'state-component') {
     await this.setState({
-      selectedDate2: date
+      selectedStateDate1: date
     })
   }
   this.handleFormatChange();
@@ -48,7 +48,7 @@ handleFormatChange = () => {
   if(this.state.name === 'country-component') {
   this.setState({formattedDate1: Moment(this.state.selectedDate1).format('YYYYMMDD')})
   } else {
-    this.setState({formattedDate2: Moment(this.state.selectedDate2).format('YYYYMMDD')})
+    this.setState({formattedStateDate2: Moment(this.state.selectedStateDate1).format('YYYYMMDD')})
   }
 }
 
@@ -58,10 +58,10 @@ handleCountryOrState = (name) => {
 }
 
   render() {
-    const {formattedDate1, formattedDate2, selectedDate1, selectedDate2, name, componentName, maxDate} = this.state;
+    const {formattedDate1, formattedStateDate1, selectedDate1, selectedStateDate1, name, componentName, maxDate} = this.state;
     // console.log('apiData:', this.state.apiData);
     console.log('%c%s','background: #12c45c; color: #000;','selectedDate1: ', selectedDate1);
-    console.log('%c%s','background: #12c45c; color: #000;','selectedDate2: ', selectedDate2);
+    console.log('%c%s','background: #12c45c; color: #000;','selectedStateDate1: ', selectedStateDate1);
     console.log('%c%s','background: #12c45c; color: #000;','formattedDate1: ', formattedDate1);
     console.log('%c%s','background: #12c45c; color: #000;','componentName:' ,componentName);
     console.log('%c%s','background: #12c45c; color: #000;','name: ', name);
@@ -82,8 +82,8 @@ handleCountryOrState = (name) => {
                       }/>
             <Route path="/States"
                     render={props =>
-                    (<StateComp {...props} selectedDate2={selectedDate2}
-                      formattedDate2={formattedDate2}
+                    (<StateComp {...props} selectedStateDate1={selectedStateDate1}
+                      formattedStateDate1={formattedStateDate1}
                       name={name}
                       componentName={componentName}
                       handleDateChange={this.handleDateChange}

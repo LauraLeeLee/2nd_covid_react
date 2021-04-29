@@ -26,7 +26,7 @@ export default class Example extends React.Component {
     // Moment(selectedDates).format('YYYY-MM-DD') 
     this.setState({ selectedDates });
   }
-  
+
   render() {
     console.log('dates selected: ', this.state.selectedDates);
     if(this.state.selectedDates.length > 0 ) {
@@ -38,11 +38,11 @@ export default class Example extends React.Component {
     }
     return(
       <div>
-        <DayPicker 
+        <DayPicker
           selectedDays={this.state.selectedDates}
           onDayClick={this.handleDaySelect}
           disabledDays={
-           { after: new Date()}
+          { after: new Date()}
           }
           />
       </div>

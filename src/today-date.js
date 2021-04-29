@@ -38,10 +38,8 @@ export const inputDate = `${year}-${month}-${date}`
 export const formatDate = (date) => {
   // console.log(date);
   if(date) {
- const d = date.slice(0, 10).split('-');
- return `${d[1]}/${d[2]}/${d[0]}`;
-  } else {
-
+  const d = date.slice(0, 10).split('-');
+  return `${d[1]}/${d[2]}/${d[0]}`;
   }
 }
 
@@ -58,5 +56,13 @@ export const formatDate2 = (date) => {
   } else {
     console.log("***date was undefined***");
     return null;
+  }
+}
+
+export const formatDate3 = (date) => {
+  // console.log(date);
+  if(date) {
+  const d = date.slice(0, 10).split('-');
+  return `${d[1]}-${d[2]}-${d[0]}`;
   }
 }

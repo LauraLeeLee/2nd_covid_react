@@ -173,6 +173,23 @@ class Country extends Component {
     this.setState({
       name: "country-component"
     });
+
+    // fetch("https://covid-19-usa-data-by-zt.p.rapidapi.com/GetUSAllHistoricalDataForState?statecode=PA", {
+    //   "method": "GET",
+    //   "headers": {
+    //     "x-rapidapi-key": "f6dd1557d8msh6d2dd4a3edac153p1b87bejsnd8feff81ffa8",
+    //     "x-rapidapi-host": "covid-19-usa-data-by-zt.p.rapidapi.com"
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(data =>
+    //   console.log(data)
+    // )
+    // .catch(err => {
+    //   console.error(err);
+    // });
+
+
   }
 
 

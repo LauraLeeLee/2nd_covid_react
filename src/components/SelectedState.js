@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectComp from './Select.js';
 import  DateComp  from './Date.js';
-import  { yesterday, formatDate2 } from '../today-date.js';
+import  { yesterday, formatDate2, formatDate3 } from '../today-date.js';
 
 class SelectedState extends React.Component {
   static propTypes = {
     apiData2: PropTypes.array,
     fetchStateCovid: PropTypes.func,
-    selectedDate2: PropTypes.instanceOf(Date).isRequired,
-    formattedDate2: PropTypes.string,
+    selectedStateDate1: PropTypes.instanceOf(Date).isRequired,
+    formattedStateDate1: PropTypes.string,
     name: PropTypes.string,
     componentName: PropTypes.string,
     handleDateChange: PropTypes.func,
     handleFormatChange: PropTypes.func,
+    // selectState: PropTypes.string,
+    // selectedApi: PropTypes.array,
+    // stateApiError: PropTypes.bool,
   }
 
   state = {
@@ -24,8 +27,9 @@ class SelectedState extends React.Component {
 
   handleChange = async(event) => {
     console.log('%c%s','background: #fc8a0f; color: #fff;',event.value.toLowerCase());
-    await this.setState({selectState: event.value.toLowerCase()});
-    this.fetchStateCovid(this.state.selectState, this.props.formattedDate2);
+    await this.setState({selectState: event.value.toUpperCase()});
+    // this.fetchStateCovid(this.state.selectState, this.props.formattedStateDate1);
+    this.fetchTrialAPI(this.state.selectState);
   }
 
   displayStateErrorMessage = () => {
@@ -57,7 +61,26 @@ class SelectedState extends React.Component {
     }
   }
 
-
+  fetchTrialAPI = async(state, date) => {
+    let fetchDate = formatDate3(date);
+    console.log("fetched date:", fetchDate);
+    console.log("what state in api?", state);
+    // await fetch(` https://api.theuscovidatlas.org/domain/v1/lisa/?state=il&category=data&start=20200901&end=20201001&type=death`
+    // await fetch(`https://webhooks.mongodb-stitch.com/api/client/v2.0/app/covid-19-qppza/service/REST-API/incoming_webhook/global_and_us?country=US&state=Pennsylvania&min_date=2020-04-22T00:00:00.000Z&max_date=2020-04-27T00:00:00.000Z&hide_fields=_id,%20country,%20country_code,%20country_iso2,%20country_iso3,%20loc,%20state`
+    await fetch(`https://api.covidactnow.org/v2/state/${state}.timeseries.json?apiKey=c2e7c321b9384535b36fd92e1fc64bd5`
+    ).then(response => response.json()
+    ).then(data => {
+        console.log("newAPIdata: ", data);
+        console.log("stateName:", data.state);
+        console.log("stateCases: ", data.actuals.cases);
+        console.log("date: ", data.actualsTimeseries[0].date);
+        console.log("check if date ", data.actualsTimeseries.some(d => d.date === "2021-04-21"));
+        this.setState({stateData: data});
+        console.log("trialStateData: ", this.state.stateData);
+    }).catch(err => {
+      console.log('%c%s', 'color: yellow; background: red; font-size: 24px;', err);
+    });
+  }
   fetchStateCovid = async(state, date) => {
     console.log('date in select state: ', date);
     const response = await fetch(
@@ -92,10 +115,10 @@ class SelectedState extends React.Component {
 
   render() {
     const {selectedApi, stateApiError} = this.state;
-    const { selectedDate2, formattedDate2, componentName, maxDate, name} = this.props;
+    const { selectedStateDate1, formattedStateDate1, componentName, maxDate, name} = this.props;
     // console.log('selecteApi:', selectedApi);
-    // console.log('selected date in SS.js: ', selectedDate);
-    console.log('%c%s','background: #fc8a0f; color: #fff;', 'formatted date in SS.js: ', formattedDate2);
+    console.log('selected date in SS.js: ', selectedStateDate1);
+    console.log('%c%s','background: #fc8a0f; color: #fff;', 'formatted STATE date: ', formattedStateDate1);
     // console.log('stateApiError: ', stateApiError);
     const stateErrorEl = document.getElementsByClassName('api-error-state');
     // console.log(stateErrorEl[0]);
@@ -133,8 +156,8 @@ class SelectedState extends React.Component {
     return (
       <div>
         <h2>Select date and state</h2>
-        <DateComp selectedDate2={selectedDate2}
-                  formattedDate2={formattedDate2}
+        <DateComp selectedStateDate1={selectedStateDate1}
+                  formattedStateDate1={formattedStateDate1}
                   handleDateChange={this.props.handleDateChange}
                   name= {"state-component"}
                   componentName={componentName}
@@ -142,7 +165,7 @@ class SelectedState extends React.Component {
 
         <SelectComp name="State"
                     handleChange={this.handleChange}
-                    selectedDate2={selectedDate2}
+                    selectedStateDate1={selectedStateDate1}
           />
         <div className="api-error-state">
           <p className="error-state-p">Select Date Before Today</p>
