@@ -120,6 +120,9 @@ class SelectedState extends React.Component {
     console.log('selected date in SS.js: ', selectedStateDate1);
     console.log('%c%s','background: #fc8a0f; color: #fff;', 'formatted STATE date: ', formattedStateDate1);
     // console.log('stateApiError: ', stateApiError);
+    console.log("yyyy-mm-dd", formatDate3(formattedStateDate1));
+
+
     const stateErrorEl = document.getElementsByClassName('api-error-state');
     // console.log(stateErrorEl[0]);
 

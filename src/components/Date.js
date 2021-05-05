@@ -21,7 +21,7 @@ static propTypes = {
     // console.log('%c%s','background: #9812c4; color: #fff;',"selectedDate1: ", selectedDate1);
     console.log('%c%s','background: #9812c4; color: #fff;',"selectedStateDate1: ", selectedStateDate1);
     // console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date1: ", formattedDate1);
-    console.log('%c%s','background: #9812c4; color: #fff;', "formatted Date2: ", formattedStateDate1);
+    console.log('%c%s','background: #9812c4; color: #fff;', "formatted State Date1: ", formattedStateDate1);
 
   let yesterday2 = new Date(new Date().setDate(new Date().getDate() - 1));
     // console.log('%c%s','background: #9812c4; color: #fff;','yesterday2: ', yesterday2);

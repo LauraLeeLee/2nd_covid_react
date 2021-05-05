@@ -205,6 +205,9 @@ class Country extends Component {
 
     let reformatted;
     console.log("apiData length", apiData.length);
+    if(apiData.length>0){
+      console.log("apiData countries: ", apiData);
+    }
     if(apiData.length> 0) {
       const dataDate = apiData[0][0].lastUpdate;
       const date = new Date(dataDate);

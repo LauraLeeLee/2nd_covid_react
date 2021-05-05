@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Header from './Header.js';
 import SelectedState from './SelectedState.js';
 // import  DateComp  from './Date.js';
-import { yesterday, formatDate2 } from '../today-date.js';
+import { yesterday, formatDate, formatDate2, formatDate3 } from '../today-date.js';
 
 class StateComp extends React.Component {
   state = {
     apiData2: [],
-    stateData: {},
+    stateData: [],
     apiProvinces: [],
     myProvinces: [],
     // selectState: '',
@@ -62,7 +62,7 @@ fetchStateCovid = async(state, date) => {
         console.log("stateCases: ", data.actuals.cases);
         console.log("date: ", data.actualsTimeseries[0].date);
         console.log("check if date ", data.actualsTimeseries.some(d => d.date === "2021-04-21"));
-        this.setState({stateData: data});
+        this.setState({stateData: [...this.state.stateData, data]});
         console.log("trialStateData: ", this.state.stateData);
     }).catch(err => {
       console.log('%c%s', 'color: yellow; background: red; font-size: 24px;', err);
@@ -79,7 +79,15 @@ fetchStateCovid = async(state, date) => {
 
     // this.fetchJohnHopkins();
 
-    this.fetchTrialAPI('FL');
+    this.fetchTrialAPI('PA');
+
+    setTimeout(function() {
+      this.fetchTrialAPI('FL');
+    }.bind(this), 1000);
+
+    setTimeout(function() {
+      this.fetchTrialAPI('NC');
+    }.bind(this), 1500);
   }
 
   render() {
@@ -94,41 +102,15 @@ fetchStateCovid = async(state, date) => {
     let renderStateData;
     let timedData = stateData.actualsTimeseries;
     let selectedDate;
-    if(Object.keys(stateData).length !== 0) {
-      console.log(stateData);
-      console.log(timedData.some(d => d.date === "2021-04-21" ));
 
-      selectedDate = timedData.filter(d => d.date === "2021-04-21");
-      selectedDate.map(x => {
-          console.log("date: ", x.date);
-          console.log("Cases: ", x.cases);
-          console.log("deaths: ", x.deaths);
-          console.log("new cases: ", x.newCases);
-          console.log("new deaths: ", x.newDeaths);
-          console.log("vaccinations completed: ", x.vaccinationsCompleated);
-          console.log("vaccinations administered: ", x.vaccinationsAdministered);
-    });
-  } else {
-    console.log("loading loading loading");
-      }
-
-if(Object.keys(stateData).length > 0 && Object.keys(selectedDate).length > 0) {
-  console.log("date for state: ", selectedDate);
-  console.log(selectedDate[0].date);
-  renderStateData =
-        <div className="data-div"
-            key={stateData.state}>
-          <p> <span className="data-titles">State:</span> {stateData.state || "State name not loaded"}</p>
-          <p> <span className="data-titles">Date:</span> {selectedDate[0].date || "Date not loaded"}</p>
-          <p> <span className="data-titles">Total Confirmed Cases:</span> {selectedDate[0].cases || "confirmed cases not loaded"}</p>
-          <p> <span className="data-titles">Total Deaths:</span> {selectedDate[0].deaths || 0 ||  "total deaths not loaded"}</p>
-          <p> <span className="data-titles">New Cases:</span> {selectedDate[0].newCases || 0 ||  "new cases not loaded"}</p>
-          <p> <span className="data-titles">New Deaths:</span> {selectedDate[0].newDeaths || 0 ||  "new deaths not loaded"}</p>
-        </div>
-    } else {
-      renderStateData = <div><p>Please try again error occurred</p></div>
+    if(stateData.length > 0){
+      stateData.map(data => {
+        console.log(data.state);
+        console.log(data.actuals.cases);
+        console.log(data.lastUpdatedDate);
+        console.log(data.actualsTimeseries[0].date);
+      })
     }
-
 
     return(
       <div>
@@ -136,6 +118,20 @@ if(Object.keys(stateData).length > 0 && Object.keys(selectedDate).length > 0) {
         <h2>State Data</h2>
 
       {renderStateData}
+      {stateData.length > 0 && stateData.map(data =>
+        <div key={data.state}
+            className="data-div">
+          <p> <span className="data-titles">State:</span> {data.state || "State name not loaded"}</p>
+          <p> <span className="data-titles">Date:</span> {formatDate(data.lastUpdatedDate) || "Date not loaded"}</p>
+          <p> <span className="data-titles">Total Confirmed Cases:</span> {data.actuals.cases.toLocaleString() || "confirmed cases not loaded"}</p>
+          <p> <span className="data-titles">Total Deaths:</span> {data.actuals.deaths.toLocaleString() || 0 ||  "total deaths not loaded"}</p>
+          <p> <span className="data-titles">New Cases:</span> {data.actuals.newCases.toLocaleString() || 0 ||  "new cases not loaded"}</p>
+          <p> <span className="data-titles">New Deaths:</span> {data.actuals.newDeaths.toLocaleString() || 0 ||  "new deaths not loaded"}</p>
+
+
+        </div>
+        )
+      }
 
         <SelectedState selectedStateDate1={selectedStateDate1}
                     formattedStateDate1={formattedStateDate1}
@@ -162,3 +158,38 @@ export default StateComp
           <p> <span className="data-titles">New Deaths:</span> {data.deathIncrease.toLocaleString() || 0 ||  "new deaths not loaded"}</p>
         </div>
         )} */}
+
+        //     if(Object.keys(stateData).length !== 0) {
+//       console.log(stateData);
+//       console.log(timedData.some(d => d.date === "2021-04-21" ));
+
+//       selectedDate = timedData.filter(d => d.date === "2021-04-21");
+//       selectedDate.map(x => {
+//           console.log("date: ", x.date);
+//           console.log("Cases: ", x.cases);
+//           console.log("deaths: ", x.deaths);
+//           console.log("new cases: ", x.newCases);
+//           console.log("new deaths: ", x.newDeaths);
+//           console.log("vaccinations completed: ", x.vaccinationsCompleated);
+//           console.log("vaccinations administered: ", x.vaccinationsAdministered);
+//     });
+//   } else {
+//     console.log("loading loading loading");
+//       }
+
+// if(Object.keys(stateData).length > 0 && Object.keys(selectedDate).length > 0) {
+//   console.log("date for state: ", selectedDate);
+//   console.log(selectedDate[0].date);
+//   renderStateData =
+//         <div className="data-div"
+//             key={stateData.state}>
+//           <p> <span className="data-titles">State:</span> {stateData.state || "State name not loaded"}</p>
+//           <p> <span className="data-titles">Date:</span> {selectedDate[0].date || "Date not loaded"}</p>
+//           <p> <span className="data-titles">Total Confirmed Cases:</span> {selectedDate[0].cases || "confirmed cases not loaded"}</p>
+//           <p> <span className="data-titles">Total Deaths:</span> {selectedDate[0].deaths || 0 ||  "total deaths not loaded"}</p>
+//           <p> <span className="data-titles">New Cases:</span> {selectedDate[0].newCases || 0 ||  "new cases not loaded"}</p>
+//           <p> <span className="data-titles">New Deaths:</span> {selectedDate[0].newDeaths || 0 ||  "new deaths not loaded"}</p>
+//         </div>
+//     } else {
+//       renderStateData = <div><p>Please try again error occurred</p></div>
+//     }
