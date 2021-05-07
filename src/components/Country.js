@@ -4,8 +4,8 @@ import Moment from 'moment';
 import Header from './Header.js';
 import SelectedCountry from './SelectedCountry.js';
 import DateComp  from './Date.js';
-import DayPicker from './DayPicker.js';
-import { formatDate, formatDate2, inputDate } from '../today-date.js';
+// import DayPicker from './DayPicker.js';
+import { formatDate } from '../today-date.js';
 // import { apiKey } from '../data/clientInfo.js';
 // import { REACT_APP_API_KEY } from '../.env'; don't need to import the .env file, it is accessed with process.env.variableName
 
@@ -53,7 +53,7 @@ class Country extends Component {
         // console.log(dataDiv[0]);
       }
 
-      const checkObject = this.state.selectedApiData.response === 0;
+      // const checkObject = this.state.selectedApiData.response === 0;
       // console.log(errorEl[0]);
       // console.log(this.state.apiError);
       // console.log(this.state.selectedApiData.response[0]);
@@ -173,29 +173,12 @@ class Country extends Component {
     this.setState({
       name: "country-component"
     });
-
-    // fetch("https://covid-19-usa-data-by-zt.p.rapidapi.com/GetUSAllHistoricalDataForState?statecode=PA", {
-    //   "method": "GET",
-    //   "headers": {
-    //     "x-rapidapi-key": "f6dd1557d8msh6d2dd4a3edac153p1b87bejsnd8feff81ffa8",
-    //     "x-rapidapi-host": "covid-19-usa-data-by-zt.p.rapidapi.com"
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(data =>
-    //   console.log(data)
-    // )
-    // .catch(err => {
-    //   console.error(err);
-    // });
-
-
   }
 
 
   render() {
     const { name } = this.state;
-    const {selectedDate1, formattedDate1, componentName, maxDate} = this.props;
+    const {selectedDate1, formattedDate1, componentName } = this.props;
     const {apiData, selectedApiData, selectCountry, apiError} = this.state;
     // console.log('selected country api:', selectedApiData);
     // console.log("apiError in render()",this.state.apiError);

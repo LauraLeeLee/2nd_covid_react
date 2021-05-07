@@ -6,6 +6,7 @@ import Home from './Home.js';
 import Nav from './Nav.js';
 import Country from './Country.js';
 import StateComp from './State.js';
+import { formatDate4, formatDate5 } from '../today-date.js';
 
 // console.log(process.env.REACT_APP_API_KEY);
 
@@ -18,7 +19,7 @@ state = {
   selectedDate1: new Date(),
   selectedStateDate1: new Date(new Date().setDate(new Date().getDate() - 1)),
   formattedDate1: Moment(new Date()).format('YYYYMMDD'),
-  formattedStateDate1: Moment(new Date(new Date().setDate(new Date().getDate() - 1))).format('YYYYMMDD'),
+  formattedStateDate1: formatDate4(Moment(new Date(new Date().setDate(new Date().getDate() - 1))).format('YYYYMMDD')),
   componentName: ""
 }
 
@@ -48,7 +49,7 @@ handleFormatChange = () => {
   if(this.state.name === 'country-component') {
   this.setState({formattedDate1: Moment(this.state.selectedDate1).format('YYYYMMDD')})
   } else {
-    this.setState({formattedStateDate2: Moment(this.state.selectedStateDate1).format('YYYYMMDD')})
+    this.setState({formattedStateDate1: formatDate5(this.state.selectedStateDate1)})
   }
 }
 
@@ -58,11 +59,11 @@ handleCountryOrState = (name) => {
 }
 
   render() {
-    const {formattedDate1, formattedStateDate1, selectedDate1, selectedStateDate1, name, componentName, maxDate} = this.state;
+    const {formattedDate1, formattedStateDate1, selectedDate1, selectedStateDate1, name, componentName } = this.state;
     // console.log('apiData:', this.state.apiData);
     console.log('%c%s','background: #12c45c; color: #000;','selectedDate1: ', selectedDate1);
     console.log('%c%s','background: #12c45c; color: #000;','selectedStateDate1: ', selectedStateDate1);
-    console.log('%c%s','background: #12c45c; color: #000;','formattedDate1: ', formattedDate1);
+    console.log('%c%s','background: #12c45c; color: #000;','formattedStateDate1: ', formattedStateDate1);
     console.log('%c%s','background: #12c45c; color: #000;','componentName:' ,componentName);
     console.log('%c%s','background: #12c45c; color: #000;','name: ', name);
     return (

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './Header.js';
 import SelectedState from './SelectedState.js';
 // import  DateComp  from './Date.js';
-import { yesterday, formatDate, formatDate2, formatDate3 } from '../today-date.js';
+import { formatDate } from '../today-date.js';
 
 class StateComp extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class StateComp extends React.Component {
     myProvinces: [],
     // selectState: '',
     // selectedApi: [],
-    // stateApiError: false,
+    stateApiError: false,
   }
 
   static propTypes = {
@@ -23,15 +23,6 @@ class StateComp extends React.Component {
     handleDateChange: PropTypes.func,
     handleCountryOrState: PropTypes.func,
   }
-
-
-  // fetchJohnHopkins = async(state, date) => {
-  //   await fetch( `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/covid-19-qppza/service/REST-API/incoming_webhook/us_only?state=New%20York&min_date=2020-04-22T00:00:00.000Z&max_date=2020-04-27T00:00:00.000Z&hide_fields=_id,%20country,%20country_code,%20country_iso2,%20country_iso3,%20loc,%20state`
-  //   ).then(response => response.json()
-  //   ).then(data => {
-  //     console.log("johnHopkins:", data);
-  //   })
-  // }
 
 fetchStateCovid = async(state, date) => {
   await fetch(
@@ -50,18 +41,18 @@ fetchStateCovid = async(state, date) => {
   });
 }
 
-  fetchTrialAPI = async(state) => {
-    console.log("what state in api?", state);
+  fetchStateAPI = async(state) => {
+    // console.log("what state in api?", state);
     // await fetch(` https://api.theuscovidatlas.org/domain/v1/lisa/?state=il&category=data&start=20200901&end=20201001&type=death`
     // await fetch(`https://webhooks.mongodb-stitch.com/api/client/v2.0/app/covid-19-qppza/service/REST-API/incoming_webhook/global_and_us?country=US&state=Pennsylvania&min_date=2020-04-22T00:00:00.000Z&max_date=2020-04-27T00:00:00.000Z&hide_fields=_id,%20country,%20country_code,%20country_iso2,%20country_iso3,%20loc,%20state`
     await fetch(`https://api.covidactnow.org/v2/state/${state}.timeseries.json?apiKey=c2e7c321b9384535b36fd92e1fc64bd5`
     ).then(response => response.json()
     ).then(data => {
-        console.log("newAPIdata: ", data);
-        console.log("stateName:", data.state);
-        console.log("stateCases: ", data.actuals.cases);
-        console.log("date: ", data.actualsTimeseries[0].date);
-        console.log("check if date ", data.actualsTimeseries.some(d => d.date === "2021-04-21"));
+        // console.log("newAPIdata: ", data);
+        // console.log("stateName:", data.state);
+        // console.log("stateCases: ", data.actuals.cases);
+        // console.log("date: ", data.actualsTimeseries[0].date);
+        // console.log("check if date ", data.actualsTimeseries.some(d => d.date === "2021-04-21"));
         this.setState({stateData: [...this.state.stateData, data]});
         console.log("trialStateData: ", this.state.stateData);
     }).catch(err => {
@@ -71,22 +62,16 @@ fetchStateCovid = async(state, date) => {
 
   componentDidMount() {
     this.props.handleCountryOrState("state-component");
+    // console.log(yesterday);
 
-    // this.fetchStateCovid('pa', 20210307);
-    // this.fetchStateCovid('fl', 20210307);
-    // this.fetchStateCovid('nc', 20210307);
-    console.log(yesterday);
-
-    // this.fetchJohnHopkins();
-
-    this.fetchTrialAPI('PA');
+    this.fetchStateAPI('PA');
 
     setTimeout(function() {
-      this.fetchTrialAPI('FL');
+      this.fetchStateAPI('FL');
     }.bind(this), 1000);
 
     setTimeout(function() {
-      this.fetchTrialAPI('NC');
+      this.fetchStateAPI('NC');
     }.bind(this), 1500);
   }
 
@@ -97,20 +82,20 @@ fetchStateCovid = async(state, date) => {
     // console.log('%c%s','background: #fcf40f; color: #000;', apiData2.length > 0 && apiData2.map(data =>
     //   data.positve.toLocaleString()));
 
-    console.log('%c%s','background: #fcf40f; color: #000;',"state component componentName: ", componentName);
+    // console.log('%c%s','background: #fcf40f; color: #000;',"state component componentName: ", componentName);
 
     let renderStateData;
     let timedData = stateData.actualsTimeseries;
     let selectedDate;
 
-    if(stateData.length > 0){
-      stateData.map(data => {
-        console.log(data.state);
-        console.log(data.actuals.cases);
-        console.log(data.lastUpdatedDate);
-        console.log(data.actualsTimeseries[0].date);
-      })
-    }
+    // if(stateData.length > 0){
+    //   stateData.map(data => {
+    //     console.log(data.state);
+    //     console.log(data.actuals.cases);
+    //     console.log(data.lastUpdatedDate);
+    //     console.log(data.actualsTimeseries[0].date);
+    //   })
+    // }
 
     return(
       <div>

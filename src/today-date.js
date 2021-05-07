@@ -66,3 +66,22 @@ export const formatDate3 = (date) => {
   return `${d[1]}-${d[2]}-${d[0]}`;
   }
 }
+
+// changes yyyyddmm to yyyy-dd-mm
+export const formatDate4 = (date) => {
+  if(date) {
+    return [date.slice(0,4), date.slice(4,6), date.slice(6,8)].join('-');
+  }
+}
+
+export const formatDate5 = (date) => {
+  let d = new Date(date),
+      month = '' + (d.getMonth() +1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+  if (month.length < 2)
+      month = '0' + month;
+  if (day.length < 2)
+      day = '0' + day;
+  return [ year, month, day].join('-');
+}
