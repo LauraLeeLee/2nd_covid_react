@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
-// import { addDays } from 'date-fns';
+import { addDays } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 
 class DateComp extends React.Component {
@@ -27,12 +27,12 @@ static propTypes = {
     // console.log('%c%s','background: #9812c4; color: #fff;','yesterday2: ', yesterday2);
 
   let selected;
-  // let maxDate;
+  let maxDate;
   // let onChange;
 
   if(componentName === 'state-component'){
     // selected = yesterday2;
-    // maxDate = addDays(new Date(), -1);
+    maxDate = addDays(new Date(), -1);
     // maxDate = addDays(new Date(), 0);
     selected = selectedStateDate1;
     // console.log('%c%s','background: #9812c4; color: #fff;',"DATE componentName: ", componentName);
@@ -40,7 +40,7 @@ static propTypes = {
   }
 
   if(componentName === 'country-component') {
-    // maxDate = addDays(new Date(), 0);
+    maxDate = addDays(new Date(), 0);
     selected = selectedDate1;
     // selected = selectedDate;
     // console.log('%c%s','background: #9812c4; color: #fff;',"DATE componentName: ", componentName);
@@ -54,7 +54,7 @@ static propTypes = {
                   onChange={ this.props.handleDateChange }
                   // name={name}
                   dateFormat="MM/dd/yyyy"
-                  // maxDate={maxDate}
+                  maxDate={maxDate}
                   />
     );
   }
