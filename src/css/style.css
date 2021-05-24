@@ -1,5 +1,7 @@
 body {
   background: #ffeda3;
+  /* background-image: linear-gradient(to right bottom, #ffeda3, #dcf2a8, #b7f5b8, #90f6d0, #6cf4eb); */
+  background-image: linear-gradient(to bottom, #ffeda3, #fbcb85, #f5a970, #ec8665, #de6262);
   text-align: center;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
@@ -74,7 +76,7 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #0401c1;
+  /* background-color: #0401c1; */
   /* width: 75%; */
   /* margin: 0 auto 0; */
   font-size: 20px;
@@ -83,16 +85,35 @@ nav ul {
 nav li {
   display: inline-block;
   width: 25%;
+  /* height: 2em; */
   margin: 0 auto 0;
-  margin-right: 5%;
-  background-color: #910303;
+  padding: 10px;
+  /* margin-right: 5%; */
+  /* background-color: #910303; */
+  background-color: #DE6262;
+  /* border-radius: 10px; */
+}
+
+li:first-of-type {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+li:last-of-type {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 nav li a {
   text-decoration: none;
   padding: 8px;
   text-align: center;
-  color: #fff;
+  /* color: #fff; */
+  color: #ffeda3,
+}
+
+h2 {
+  color: #0401c1;
 }
 
 .data-div,

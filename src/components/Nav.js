@@ -17,16 +17,16 @@ class Nav extends Component {
             </li>
             <li>
               <NavLink activeClassName="active-link" to="/Countries">
-                  Countries
+                  Data by Country
               </NavLink>
             </li>
             <li>
             <NavLink activeClassName="active-link" to="/States">
-                States
+                Data by State
             </NavLink>
-           </li>
-         </ul>
-       </nav>
+            </li>
+          </ul>
+        </nav>
       </React.Fragment>
 
     )
