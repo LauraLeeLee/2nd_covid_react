@@ -67,15 +67,16 @@ class SelectedState extends React.Component {
     await fetch(`https://api.covidactnow.org/v2/state/${state}.timeseries.json?apiKey=c2e7c321b9384535b36fd92e1fc64bd5`
     ).then(response => response.json()
     ).then(data => {
-        // console.log("newAPIdata: ", data);
+        console.log("newAPIdata: ", data);
         // console.log("stateName:", data.state);
         // console.log("stateCases: ", data.actuals.cases);
+        // console.log('check for null:', data.actualsTimeseries[487].newCases);
         this.setState({selectedApi: data});
-        // console.log("selectStateAPI: ", this.state.selectedApi);
+        console.log("selectStateAPI: ", this.state.selectedApi);
 
         this.selectedDateStateData(this.props.formattedStateDate1);
     }).catch(err => {
-      console.log('%c%s', 'color: yellow; background: red; font-size: 24px;', err);
+      console.log('%c%s', 'color: yellow; background: red; font-size: 15px;', err);
     });
   }
 

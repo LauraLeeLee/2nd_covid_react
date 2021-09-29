@@ -25,7 +25,7 @@ state = {
 
 handleDateChange = async(date, name) => {
   console.log('%c%s','background: #12c45c; color: #000;',"which date component in APP:",this.state.componentName);
-  console.log('%c%s','background: #12c45c; color: #000;','does state.name have value in App?: ', 'background: #12c45c; color: #000;', this.state.name );
+  console.log('%c%s','background: #12c45c; color: #000;','does state.name have value in App?: ', this.state.name );
   console.log('%c%s','background: #12c45c; color: #000;',"handleDateChange FIRED");
   // await this.setState({
   //   selectedDate: date,

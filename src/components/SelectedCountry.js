@@ -36,10 +36,9 @@ class SelectedCountry extends React.Component {
             className="selected-data-div">
               <p> <span className="data-titles">Date:</span> {selectedApiData.parameters.day || "Date not loaded"}</p>
               <p> <span className="data-titles">Country:</span> {selectedApiData.parameters.country  || "country name not loaded"}</p>
-              <p> <span className="data-titles">Total Confirmed Cases:</span> {((typeof selectedApiData.response[0]) != "undefined")  ?  selectedApiData.response[0].cases.total.toLocaleString() : "confirmed cases not loaded"}</p>
-              <p> <span className="data-titles"> New Cases:{((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].cases.new : "new cases not loaded"}</span></p>
-              <p> <span className="data-titles">Total Deaths:</span> {((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].deaths.total.toLocaleString() : 0 }</p>
-              <p> <span className="data-titles">New Deaths:</span> {((typeof selectedApiData.response[0]) != "undefined")  ? selectedApiData.response[0].deaths.new : 0 }</p>
+              <p> <span className="data-titles">Total Confirmed Cases:</span> {(((typeof selectedApiData.response[0]) != "undefined") && (selectedApiData.response[0].cases.total))  ?  selectedApiData.response[0].cases.total.toLocaleString() : "confirmed cases not loaded"}</p>
+              <p> <span className="data-titles"> New Cases:</span> {(((typeof selectedApiData.response[0]) != "undefined") && (selectedApiData.response[0].deaths.total > 0)) ? selectedApiData.response[0].deaths.total.toLocaleString() : 0 }</p>
+              <p> <span className="data-titles">New Deaths:</span> {(((typeof selectedApiData.response[0]) != "undefined") && (selectedApiData.response[0].deaths.new > 0))  ? selectedApiData.response[0].deaths.new.toLocaleString() : 0 }</p>
             </div>}
       </div>
     )

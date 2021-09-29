@@ -32,6 +32,7 @@ class SelectComp extends React.Component {
               onChange={this.props.handleChange}
               placeholder= {this.props.name === "Country" ? "Select Country" : "Select State"}
               options={options}
+              // isMulti
               />
       </div>
     )

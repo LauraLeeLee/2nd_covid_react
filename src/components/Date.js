@@ -55,6 +55,7 @@ static propTypes = {
                   // name={name}
                   dateFormat="MM/dd/yyyy"
                   maxDate={maxDate}
+                  placeholderText="Select a Date"
                   />
     );
   }
