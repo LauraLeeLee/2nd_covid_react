@@ -979,7 +979,7 @@ export const countriesData4 = [
 ]
 
 export const countriesData5 = [
-  {label: "Afghanistan", value: "Afghanistan"},
+  {label: "Afghanistan", value: "Afghanista"},
   {label: "Albania", value: "Albania"},
   {label: "Algeria", value: "Algeria"},
   {label: "Andorra", value: "Andorra"},
